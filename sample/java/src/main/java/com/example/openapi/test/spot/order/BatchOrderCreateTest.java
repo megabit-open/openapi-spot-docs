@@ -139,7 +139,6 @@ public class BatchOrderCreateTest {
                 new BigDecimal("0.001"),
                 new BigDecimal("80000")
         );
-        buyOrder.setClientOrderId("BATCH_LIMIT_BUY_" + System.currentTimeMillis());
         orderList.add(buyOrder);
 
         // 添加限价卖单
@@ -148,7 +147,6 @@ public class BatchOrderCreateTest {
                 new BigDecimal("0.001"),
                 new BigDecimal("90000")
         );
-        sellOrder.setClientOrderId("BATCH_LIMIT_SELL_" + System.currentTimeMillis());
         orderList.add(sellOrder);
 
         // 批量创建订单

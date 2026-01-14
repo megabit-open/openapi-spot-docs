@@ -83,9 +83,6 @@ public class OrderQueryTest {
             queryParams.put("tradeType", orderRequest.getTradeType());
             queryParams.put("price", orderRequest.getPrice().toPlainString());
 
-            if (orderRequest.getClientOrderId() != null) {
-                queryParams.put("clientOrderId", orderRequest.getClientOrderId());
-            }
 
             // 调用API
             String responseJson = apiClient.sendPostRequest("/spot/v1/u/trade/order/create", queryParams);
@@ -136,7 +133,6 @@ public class OrderQueryTest {
         // 3. 打印订单详情
         log.info("订单查询成功，详情如下:");
         log.info("订单ID: {}", orderDetail.getOrderId());
-        log.info("客户端订单ID: {}", orderDetail.getClientOrderId());
         log.info("币对: {}", orderDetail.getSymbol());
         log.info("订单类型: {}", orderDetail.getOrderType());
         log.info("方向: {}", orderDetail.getOrderSide());
@@ -166,7 +162,6 @@ public class OrderQueryTest {
      */
     public static class OrderVO {
         private String orderId;           // 订单ID
-        private String clientOrderId;     // 客户端订单ID
         private String symbol;            // 交易对
         private String orderType;         // 订单类型：LIMIT或MARKET
         private String orderSide;         // 买卖方向：BUY或SELL
@@ -191,13 +186,6 @@ public class OrderQueryTest {
             this.orderId = orderId;
         }
 
-        public String getClientOrderId() {
-            return clientOrderId;
-        }
-
-        public void setClientOrderId(String clientOrderId) {
-            this.clientOrderId = clientOrderId;
-        }
 
         public String getSymbol() {
             return symbol;

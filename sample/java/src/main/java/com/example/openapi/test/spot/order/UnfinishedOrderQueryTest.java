@@ -28,7 +28,6 @@ public class UnfinishedOrderQueryTest {
      *
      * @param symbol        交易对，如BTC_USDT
      * @param balanceType   账户类型 1.现货账户 2.杠杆账户
-     * @param clientOrderId 自定义订单ID
      * @param startTime     开始时间
      * @param endTime       结束时间
      * @param state         订单状态 1：新建订单;未成交; 2：部分成交；3：全部成交；4：已撤销；5：下单失败；6：已过期; 9:未完成；10：历史订单
@@ -40,7 +39,6 @@ public class UnfinishedOrderQueryTest {
     public PageResult<OrderVO> getUnfinishedOrders(
             String symbol,
             Integer balanceType,
-            String clientOrderId,
             Long startTime,
             Long endTime,
             Integer state,
@@ -60,9 +58,6 @@ public class UnfinishedOrderQueryTest {
                 queryParams.put("balanceType", balanceType.toString());
             }
 
-            if (clientOrderId != null && !clientOrderId.isEmpty()) {
-                queryParams.put("clientOrderId", clientOrderId);
-            }
 
             if (startTime != null) {
                 queryParams.put("startTime", startTime.toString());
@@ -183,7 +178,7 @@ public class UnfinishedOrderQueryTest {
                 symbol, balanceType, page, size);
 
         PageResult<OrderVO> pageResult = getUnfinishedOrders(
-                symbol, balanceType, null, null, null, state, page, size
+                symbol, balanceType, null, null, state, page, size
         );
 
         // 打印查询结果
@@ -196,7 +191,6 @@ public class UnfinishedOrderQueryTest {
         for (OrderVO order : pageResult.getItems()) {
             log.info("订单 #{}", index++);
             log.info("  订单ID: {}", order.getOrderId());
-            log.info("  客户订单ID: {}", order.getClientOrderId());
             log.info("  币对: {}", order.getSymbol());
             log.info("  订单类型: {}", order.getOrderType());
             log.info("  交易方向: {}", order.getOrderSide());
@@ -226,7 +220,7 @@ public class UnfinishedOrderQueryTest {
                 symbol, balanceType, startTime, endTime);
 
         PageResult<OrderVO> pageResult = getUnfinishedOrders(
-                symbol, balanceType, null, startTime, endTime, null, 1, 10
+                symbol, balanceType, startTime, endTime, null, 1, 10
         );
 
         log.info("共查询到 {} 条符合条件的订单", pageResult.getItems().size());
@@ -252,7 +246,7 @@ public class UnfinishedOrderQueryTest {
         // 第一页
         log.info("查询第一页数据，每页 {} 条", size);
         PageResult<OrderVO> page1 = getUnfinishedOrders(
-                symbol, 1, null, null, null, null, 1, size
+                symbol, 1, null, null, null, 1, size
         );
 
         log.info("第一页共 {} 条记录，总计 {} 条记录",
@@ -262,7 +256,7 @@ public class UnfinishedOrderQueryTest {
             // 查询第二页
             log.info("查询第二页数据，每页 {} 条", size);
             PageResult<OrderVO> page2 = getUnfinishedOrders(
-                    symbol, 1, null, null, null, null, 2, size
+                    symbol, 1, null, null, null, 2, size
             );
 
             log.info("第二页共 {} 条记录", page2.getItems().size());
@@ -353,7 +347,6 @@ public class UnfinishedOrderQueryTest {
      */
     public static class OrderVO {
         private String orderId;         // 订单ID
-        private String clientOrderId;   // 客户订单ID
         private String symbol;          // 交易对
         private String orderType;       // 订单类型：LIMIT限价，MARKET市价
         private String orderSide;       // 交易方向：BUY买入，SELL卖出
@@ -377,13 +370,6 @@ public class UnfinishedOrderQueryTest {
             this.orderId = orderId;
         }
 
-        public String getClientOrderId() {
-            return clientOrderId;
-        }
-
-        public void setClientOrderId(String clientOrderId) {
-            this.clientOrderId = clientOrderId;
-        }
 
         public String getSymbol() {
             return symbol;

@@ -86,9 +86,6 @@ public class OrderCancelTest {
             queryParams.put("tradeType", orderRequest.getTradeType());
             queryParams.put("price", orderRequest.getPrice().toPlainString());
 
-            if (orderRequest.getClientOrderId() != null) {
-                queryParams.put("clientOrderId", orderRequest.getClientOrderId());
-            }
 
             // 调用API
             String responseJson = apiClient.sendPostRequest("/spot/v1/u/trade/order/create", queryParams);

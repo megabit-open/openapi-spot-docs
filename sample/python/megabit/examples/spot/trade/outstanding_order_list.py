@@ -32,7 +32,6 @@ if __name__ == '__main__':
 
     get_outstanding_order_list_params = {
         "symbol": "BTC_USDT",
-        "clientOrderId": "16812000010010",
         # "startTime": int(time.time() * 1000),
         # "endTime": int(time.time() * 1000),
         "state": "10",

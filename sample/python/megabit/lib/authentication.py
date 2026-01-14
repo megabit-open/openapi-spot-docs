@@ -76,7 +76,6 @@ if __name__ == '__main__':
     logging.info("当前时间:%s", current_milliseconds)
     createOrderParams = {"symbol": "BTC_USDT", "direction": "BUY", "tradeType": "LIMIT",
                          "totalAmount": "1", "price": "100",
-                         "clientOrderId": "1681200001000",
                          "balanceType": 1}
 
     signature = gen_Signature(secretKey, createOrderParams, current_milliseconds)

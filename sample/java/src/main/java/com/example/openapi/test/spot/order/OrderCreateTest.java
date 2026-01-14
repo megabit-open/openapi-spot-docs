@@ -52,9 +52,6 @@ public class OrderCreateTest {
                 queryParams.put("price", orderRequest.getPrice().toPlainString());
             }
 
-            if (orderRequest.getClientOrderId() != null) {
-                queryParams.put("clientOrderId", orderRequest.getClientOrderId());
-            }
 
             // 调用API
             String responseJson = apiClient.sendPostRequest("/spot/v1/u/trade/order/create", queryParams);
@@ -168,7 +165,6 @@ public class OrderCreateTest {
         private String tradeType;        // 订单类型：LIMIT或MARKET
         private BigDecimal totalAmount;  // 数量
         private BigDecimal price;        // 价格（市价单可为null）
-        private String clientOrderId;    // 自定义订单ID
 
         // 默认构造函数
         public OrderRequest() {
@@ -184,13 +180,12 @@ public class OrderCreateTest {
 
         // 完整参数构造函数
         public OrderRequest(String symbol, String direction, String tradeType,
-                            BigDecimal totalAmount, BigDecimal price, String clientOrderId) {
+                            BigDecimal totalAmount, BigDecimal price) {
             this.symbol = symbol;
             this.direction = direction;
             this.tradeType = tradeType;
             this.totalAmount = totalAmount;
             this.price = price;
-            this.clientOrderId = clientOrderId;
         }
 
         /**
@@ -208,7 +203,6 @@ public class OrderCreateTest {
             request.setTradeType("LIMIT");
             request.setTotalAmount(amount);
             request.setPrice(price);
-            request.setClientOrderId("LIMIT_BUY_" + System.currentTimeMillis());
             return request;
         }
 
@@ -227,7 +221,6 @@ public class OrderCreateTest {
             request.setTradeType("LIMIT");
             request.setTotalAmount(amount);
             request.setPrice(price);
-            request.setClientOrderId("LIMIT_SELL_" + System.currentTimeMillis());
             return request;
         }
 
@@ -244,7 +237,6 @@ public class OrderCreateTest {
             request.setDirection("BUY");
             request.setTradeType("MARKET");
             request.setTotalAmount(amount);
-            request.setClientOrderId("MARKET_BUY_" + System.currentTimeMillis());
             return request;
         }
 
@@ -261,7 +253,6 @@ public class OrderCreateTest {
             request.setDirection("SELL");
             request.setTradeType("MARKET");
             request.setTotalAmount(amount);
-            request.setClientOrderId("MARKET_SELL_" + System.currentTimeMillis());
             return request;
         }
 
@@ -333,14 +324,6 @@ public class OrderCreateTest {
 
         public void setPrice(BigDecimal price) {
             this.price = price;
-        }
-
-        public String getClientOrderId() {
-            return clientOrderId;
-        }
-
-        public void setClientOrderId(String clientOrderId) {
-            this.clientOrderId = clientOrderId;
         }
     }
 }

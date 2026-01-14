@@ -61,8 +61,7 @@ The following endpoints are public and **do not require any authentication**. Th
 | tradeType | String | Yes | Order type: "LIMIT" for limit orders, "MARKET" for market orders |
 | totalAmount | String | Yes | Order quantity |
 | price | String | Conditional | Order price, required for limit orders |
-| clientOrderId | String | No | Custom order ID |
- | timeInForce | String | No | Time-in-force, e.g., "GTC" (default), "GTX" (post only) |
+| timeInForce | String | No | Time-in-force, e.g., "GTC" (default), "GTX" (post only) |
 
 **Response Parameters**:
 
@@ -109,7 +108,6 @@ The following endpoints are public and **do not require any authentication**. Th
 | Parameter Name | Type | Description |
 |-------|-----|------|
 | orderId | String | Order ID |
-| clientOrderId | String | Client order ID |
 | symbol | String | Trading pair |
 | orderType | String | Order type: LIMIT or MARKET |
 | orderSide | String | Buy or sell direction: BUY or SELL |
@@ -144,7 +142,6 @@ The following endpoints are public and **do not require any authentication**. Th
   "msg": "success",
   "data": {
     "orderId": "475533479170587712",
-    "clientOrderId": "LIMIT_BUY_1684896521234",
     "symbol": "BTC_USDT",
     "orderType": "LIMIT",
     "orderSide": "BUY",
@@ -174,7 +171,6 @@ The following endpoints are public and **do not require any authentication**. Th
 | Parameter Name | Type | Required | Description |
 |-------|-----|-----|------|
 | symbol | String | No | Trading pair, e.g., "BTC_USDT" |
-| clientOrderId | String | No | Custom order ID |
 | startTime | Long | No | Start timestamp for the query (milliseconds) |
 | endTime | Long | No | End timestamp for the query (milliseconds) | 
 | state | Integer | No | Order status filter: 1-New order(unfilled), 2-Partially filled, 3-Completely filled, 4-Canceled, 5-Order failed, 6-Expired, 9-Open orders, 10-Historical orders |
@@ -203,7 +199,6 @@ The following endpoints are public and **do not require any authentication**. Th
 | Parameter Name | Type | Description |
 |-------|-----|------|
 | orderId | String | Order ID |
-| clientOrderId | String | Client order ID |
 | symbol | String | Trading pair |
 | orderType | String | Order type: LIMIT or MARKET |
 | orderSide | String | Buy or sell direction: BUY or SELL |
@@ -231,7 +226,6 @@ The following endpoints are public and **do not require any authentication**. Th
       "items": [
          {
             "orderId": "480897844870833664",
-            "clientOrderId": "LIMIT_BUY_1744356980647",
             "symbol": "BTC_USDT",
             "orderType": "LIMIT",
             "orderSide": "BUY",
@@ -289,7 +283,6 @@ The following endpoints are public and **do not require any authentication**. Th
 | Parameter Name | Type | Description |
 |-------------|--------|--------------------|
 | orderId | String | Order ID |
-| clientOrderId | String | Client order ID |
 | symbol | String | Trading pair |
 | orderType | String | Order type: LIMIT or MARKET |
 | orderSide | String | Buy or sell direction: BUY or SELL |
@@ -316,7 +309,6 @@ The following endpoints are public and **do not require any authentication**. Th
       "items": [
          {
             "orderId": "477292215853414656",
-            "clientOrderId": "BATCH_LIMIT_SELL_1743497331250",
             "symbol": "BTC_USDT",
             "orderType": "LIMIT",
             "orderSide": "SELL",
@@ -429,12 +421,11 @@ The following endpoints are public and **do not require any authentication**. Th
 | tradeType | String | Yes | Order type: "LIMIT" for limit orders, "MARKET" for market orders |
 | totalAmount | String | Yes | Order quantity |
 | price | String | Conditional | Order price, required for limit orders |
-| clientOrderId | String | No | Custom order ID |
 
 **Request Example**:
 ```json
 {
-  "ordersJsonStr": "[{\"symbol\":\"BTC_USDT\",\"direction\":\"BUY\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"80000\",\"clientOrderId\":\"BATCH_LIMIT_BUY_123456789\"},{\"symbol\":\"BTC_USDT\",\"direction\":\"SELL\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"90000\",\"clientOrderId\":\"BATCH_LIMIT_SELL_123456789\"}]"
+  "ordersJsonStr": "[{\"symbol\":\"BTC_USDT\",\"direction\":\"BUY\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"80000\"},{\"symbol\":\"BTC_USDT\",\"direction\":\"SELL\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"90000\"}]"
 }
 ```
 

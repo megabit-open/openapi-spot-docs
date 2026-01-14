@@ -71,7 +71,7 @@ public class BatchCancelOrderTest {
         // 先查询当前未完成的订单
         UnfinishedOrderQueryTest orderQueryTest = new UnfinishedOrderQueryTest();
         UnfinishedOrderQueryTest.PageResult<UnfinishedOrderQueryTest.OrderVO> orders = orderQueryTest.getUnfinishedOrders(
-                "BTC_USDT", 1, null, null, null, 9, 1, 10);
+                "BTC_USDT", 1, null, null, 9, 1, 10);
 
         if (orders.getItems() == null || orders.getItems().isEmpty()) {
             log.info("当前没有未完成的订单，无法测试批量撤单");

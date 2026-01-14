@@ -61,7 +61,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | tradeType | String | 是 | 订单类型："LIMIT"限价单，"MARKET"市价单        |
 | totalAmount | String | 是 | 委托数量                               |
 | price | String | 条件必填 | 委托价格，限价单必填                         |
-| clientOrderId | String | 否 | 客户自定义订单ID                          |
 | timeInForce | String | 否 | 订单有效方式，如 "GTC"（默认）"GTX"(post only) |
 
 **响应参数**:
@@ -109,7 +108,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | 参数名 | 类型 | 说明 |
 |-------|-----|------|
 | orderId | String | 订单ID |
-| clientOrderId | String | 客户端订单ID |
 | symbol | String | 交易对 |
 | orderType | String | 订单类型：LIMIT或MARKET |
 | orderSide | String | 买卖方向：BUY或SELL |
@@ -144,7 +142,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
   "msg": "success",
   "data": {
     "orderId": "475533479170587712",
-    "clientOrderId": "LIMIT_BUY_1684896521234",
     "symbol": "BTC_USDT",
     "orderType": "LIMIT",
     "orderSide": "BUY",
@@ -174,7 +171,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | 参数名 | 类型 | 必填 | 说明 |
 |-------|-----|-----|------|
 | symbol | String | 否 | 交易对，如"BTC_USDT" |
-| clientOrderId | String | 否 | 客户自定义订单ID |
 | startTime | Long | 否 | 查询开始时间戳(毫秒) |
 | endTime | Long | 否 | 查询结束时间戳(毫秒) | 
 | state | Integer | 否 | 订单状态筛选：1-新建订单(未成交)、2-部分成交、3-全部成交、4-已撤销、5-下单失败、6-已过期、9-未完成、10-历史订单 |
@@ -203,7 +199,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | 参数名 | 类型 | 说明 |
 |-------|-----|------|
 | orderId | String | 订单ID |
-| clientOrderId | String | 客户端订单ID |
 | symbol | String | 交易对 |
 | orderType | String | 订单类型: LIMIT or MARKET |
 | orderSide | String | 买卖方向: BUY或SELL |
@@ -231,7 +226,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
       "items": [
          {
             "orderId": "480897844870833664",
-            "clientOrderId": "LIMIT_BUY_1744356980647",
             "symbol": "BTC_USDT",
             "orderType": "LIMIT",
             "orderSide": "BUY",
@@ -289,7 +283,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | 参数名       | 类型   | 说明                 |
 |-------------|--------|--------------------|
 | orderId     | String | 订单ID               |
-| clientOrderId | String | 客户端订单ID            |
 | symbol      | String | 交易对                |
 | orderType   | String | 订单类型: LIMIT或MARKET |
 | orderSide   | String | 买卖方向: BUY或SELL     |
@@ -316,7 +309,6 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
       "items": [
          {
             "orderId": "477292215853414656",
-            "clientOrderId": "BATCH_LIMIT_SELL_1743497331250",
             "symbol": "BTC_USDT",
             "orderType": "LIMIT",
             "orderSide": "SELL",
@@ -429,12 +421,11 @@ MGBX 交易平台 API 提供了程序化交易的能力，允许开发者通过 
 | tradeType | String | 是 | 订单类型："LIMIT"限价单，"MARKET"市价单 |
 | totalAmount | String | 是 | 委托数量 |
 | price | String | 条件必填 | 委托价格，限价单必填 |
-| clientOrderId | String | 否 | 客户自定义订单ID |
 
 **请求示例**:
 ```json
 {
-  "ordersJsonStr": "[{\"symbol\":\"BTC_USDT\",\"direction\":\"BUY\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"80000\",\"clientOrderId\":\"BATCH_LIMIT_BUY_123456789\"},{\"symbol\":\"BTC_USDT\",\"direction\":\"SELL\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"90000\",\"clientOrderId\":\"BATCH_LIMIT_SELL_123456789\"}]"
+  "ordersJsonStr": "[{\"symbol\":\"BTC_USDT\",\"direction\":\"BUY\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"80000\"},{\"symbol\":\"BTC_USDT\",\"direction\":\"SELL\",\"tradeType\":\"LIMIT\",\"totalAmount\":\"0.001\",\"price\":\"90000\"}]"
 }
 ```
 

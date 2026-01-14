@@ -216,7 +216,6 @@ public class OrderHistoryQueryTest {
      */
     private void printOrderDetail(OrderVO order) {
         log.info("  订单ID: {}", order.getOrderId());
-        log.info("  客户端订单ID: {}", order.getClientOrderId());
         log.info("  币对: {}", order.getSymbol());
         log.info("  订单类型: {}", order.getOrderType());
         log.info("  方向: {}", order.getOrderSide());
@@ -419,7 +418,6 @@ public class OrderHistoryQueryTest {
      */
     public static class OrderVO {
         private Long orderId;         // 订单ID
-        private String clientOrderId; // 客户端订单ID
         private String symbol;        // 交易对
         private String orderType;     // 订单类型：LIMIT或MARKET
         private String orderSide;     // 买卖方向：BUY或SELL
@@ -443,13 +441,6 @@ public class OrderHistoryQueryTest {
             this.orderId = orderId;
         }
 
-        public String getClientOrderId() {
-            return clientOrderId;
-        }
-
-        public void setClientOrderId(String clientOrderId) {
-            this.clientOrderId = clientOrderId;
-        }
 
         public String getSymbol() {
             return symbol;
